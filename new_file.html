@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+      <style type="text/css">
+			 /* .ifs{
+				 height: 500px;
+				 width: 1000px;
+			 }
+			 .bilibili-player-video-pause-panel-container-mask{
+				background-image:none;
+			 } */
+      
+      </style>
+	<body>
+	  <div>
+		  <h2>bilibili视频</h2>
+		  <!-- 屏蔽了window.top != window.self  allow = false 没有创建播放器1对象 事实上，这提示我们，只要查看top.location.hostname是否报错就可以了。如果报错了，表明存在跨域，就对top对象进行URL重导向定向到自己网页 不允许别人用iframe引用我的网页；如果不报错，表明不存在跨域（或者未使用框架），就不采取操作 top.location != self.location 就是说当前窗体的url和父窗体的 url是不是相同如果相同执行top.location=self.location;}，把窗体的url设成和本窗体一样。这个是为了防止别的网站嵌入你的网站的内容（比如用iframe嵌入的你的网站的页面）。-->		  
+		  <!-- try{
+			top.location.hostname 最外层页面 带有iframe;
+			
+		  }catch(e){
+			top.location.href = window.location.href 当前页面;
+		  } -->
+		  <!-- 所以第一个不能播放 第二个能播放-->
+		<iframe src="https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=52549693&cid=91961258&page=1"  scrolling="no"  frameborder="no" framespacing="0" allowfullscreen="true" class=" ifra hidden" id="ifra1" sandbox="allow-scripts" height="500px" width=>  </iframe>
+		<h1>mobile			
+		</h1>
+		<iframe src="http://player.bilibili.com/player.html?aid=52549693&cid=91961258&page=1"  scrolling="no"  frameborder="no" framespacing="0" allowfullscreen="true" class=" ifra hidden" id="ifra">
+		</iframe>
+	<iframe src="http://player.bilibili.com/player.html?aid=57449597&cid=100299444&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="ifs" height="500px" width="1000px"> </iframe>
+		<p>
+		<embed src=”http://static.hdslb.com/miniloader.swf?aid=348488″ quality=”high” allowfullscreen=”true” type=”application/x-shockwave-flash” width=”550″ height=”400″ pluginspage=”http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash” />
+		</p>
+	 </div>
+	</body>
+
+</html>

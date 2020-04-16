@@ -1,0 +1,583 @@
+* {
+    padding: 0;
+    margin: 0
+}
+
+li {
+    list-style: none;
+}
+
+
+body {
+    height: 100%;
+    width: 100%;
+    min-width: 300px;
+    font-size: 16px;
+
+
+}
+
+input {
+    outline: none
+}
+
+i,
+em {
+    font-style: normal;
+}
+a{
+   text-decoration: none;
+}
+
+.part1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    // .part1-nav-box {
+    //     width: 100%;
+    //     min-width: 1240px;
+    //     height: 132px;
+    //     overflow: hidden;
+    //     background-color: #1f2d47;
+    //     opacity: 0.7;
+    //     position: absolute;
+    //     left: 50%;
+    //     bottom: 0;
+    //     margin-left: -50%;
+    //     z-index: 2;
+    //     -moz-box-shadow: 0px -5px 9px rgba(0, 0, 0, 0.5);
+    //     -webkit-box-shadow: 0px -5px 9px rgba(0, 0, 0, 0.5);
+    //     box-shadow: 0px -5px 9px rgba(0, 0, 0, 0.5);
+    //     display: flex;
+    //     justify-content: flex-start;
+
+    //     .title {
+    //         width: 305px;
+    //         height: 94px;
+    //         // background: url(http://www.xinhuanet.com/politics/xxjxs/images/20170213calendar.png) 0 0 no-repeat;
+    //         /* margin-left: 170px; */
+    //         margin-top: 20px;
+    //         // float: left;
+    //     }
+
+    //     .box-list {
+    //         // width: 1552px; 
+    //         height: 132px;
+    //         // float: left;
+    //         margin-left: 65px;
+
+    //         li {
+    //             width: 140px;
+    //             height: 132px;
+    //             position: relative;
+    //             float: left;
+    //             transform: skew(-30deg);
+
+    //             .part1-nav-list-name {
+    //                 height: 90px;
+    //                 width: 140px;
+    //                 float: left;
+    //                 position: relative;
+    //                 padding-top: 32px;
+    //                 transform: skew(30deg);
+    //                 text-align: center;
+    //             }
+
+    //             .part1-nav-list-tit-wrapper {
+    //                 width: 0px; //js控制宽
+    //                 height: 90px;
+    //                 float: left;
+    //                 /*transform: skew(30deg);*/
+    //                 overflow: hidden;
+    //                 margin-top: 20px;
+    //                 position: relative;
+    //                 /*margin-left: -24px;*/
+    //                 /*padding-left: 24px;*/
+    //                 transform: skew(30deg);
+    //             }
+
+    //             .part1-nav-list-tit-wrapper:before {
+    //                 content: "";
+    //                 position: absolute;
+    //                 left: 0;
+    //                 top: 5px;
+    //                 background: #6d7585;
+    //                 width: 1px;
+    //                 height: 82px;
+    //             }
+    //         }
+
+    //         li:before {
+    //             content: "";
+    //             position: absolute;
+    //             left: 0;
+    //             top: 0;
+    //             width: 1px;
+    //             height: 105%;
+    //             background: #fff;
+    //             opacity: 0.2;
+    //             /* transform: rotate(25deg) translate(0px,-6px); */
+    //         }
+    //     }
+    // }
+}
+
+.main {
+    position: relative;
+    padding-top: 60px;
+
+    .menu {
+        // background: url(http://www.xinhuanet.com/politics/xxjxs/images/20170213navbg.png) 0 0 repeat-x;
+        height: 60px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+        background-color: #9D0102;
+        // opacity: 0.6;
+        .logo {
+         float: left;
+         margin-top:10px;
+        //  UI图160px/根元素字体16px=10rem
+         margin-left: 1.6rem;
+        }
+        @media screen and (min-width: 700px)  {
+            .nav {
+                display: flex;
+                justify-content: flex-end;
+                // flex-direction: row-reverse;
+                margin-right: 1.6rem;
+               
+    
+    
+                li {
+                    float: right;
+                    // rem
+                    width: 2.5rem;
+                    // padding: 0 0.6rem;
+                     text-align: center;
+                    height: 60px;
+                    line-height: 60px;
+                    // font-size: 18px;
+                    // position: relative;
+                    a{
+                        color: #FFFDF3;
+                        cursor: pointer;
+    
+                    }
+                }
+            }
+        }
+       
+        .zhedie{
+            position: absolute;
+            right: 5px;
+            top:0;
+            height: 60px;
+            line-height: 70px;
+            display: none;
+            img{
+                height:30px;
+                width: 30px;
+            }
+        }
+    }
+}
+@media screen and (min-width:700px){
+    .parts{
+        background-color: #FFFFFF;
+        height: 100%;
+        padding: 0 4rem;
+        overflow: hidden;
+        .boxs{
+            // height: 600px;
+            min-width: 320px;
+            margin-top: 90px;
+            border-top: 1px solid #9D0102;
+            text-align: center;
+            color: #9D0102;
+            .title1{
+                display: block;
+                width: 4.53rem;
+                min-width: 260px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #FFFFFF;
+                top: -15px;
+                text-align: center;
+                color: #9D0102;
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+            .detail{
+                height: 100%;
+                margin-top: 10px;
+    
+                
+             }
+        }
+    }
+}
+.part1{
+    .swiper-container{
+        .swiper-slide {
+           img{
+               width: 100%;
+               height: 100%;
+               display: block;
+           }
+        }
+    }
+}
+.part2{
+
+  .video{
+
+      position: relative;
+      height: 800px !important;
+
+    iframe{
+        width: 100%;
+         height: 100%;
+        // position: absolute;
+        // left: 0;
+        // z-index: 1;
+
+    }
+    // .pause{
+    //   img{
+    //       width: 100%
+    //   }
+    // }
+    // .btn{
+        
+    //     display: inline-block;
+    //     height: 50px;
+    //     width: 50px;
+    //     position: absolute;
+    //     left: 49%;
+    //     transform: translateX(-50%);
+    //     top:50%;
+    //     transform: translateY(-50%);
+    //     background: url('../img/播放.svg') no-repeat;
+    //     background-size: contain;
+    //     cursor: pointer;
+    // }
+    
+  }
+}
+.part3{
+    .case{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-evenly;
+        
+       img{
+         width: 2.1rem;
+         height: 3.8rem;
+         margin: 0.05rem;
+         cursor: pointer;
+       }
+    }
+}
+.part3-1{
+    .case70{
+        background-color: #9D0102;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-evenly;
+        
+       img{
+         width:2.24rem;
+         height: 3.61rem;
+         margin: 0.05rem 0.02rem;
+         cursor: pointer;
+
+       }
+       img:nth-child(1){
+        cursor: default;
+
+      }
+    }
+}
+.part4{
+  .advantage{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    .imgs{
+       
+          width: 2.68rem;
+          height: 360px;
+          background-color: #9D0102;
+          margin: 0.05rem 0.02rem;
+          color: #FDF5F4;
+
+          img{
+           width: 100%;
+           height:100%;
+          }
+          h3{
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 0.3rem;
+        }
+        p{
+            font-size: 12px;
+            padding: 0 0.2rem;
+            text-align: left;
+            margin-top: 0.5rem;
+        }
+      }
+      .imgs:nth-child(1){
+        width: 5.43rem;
+        height: 360px;
+        margin: 0.05rem 0.02rem;
+        img{
+            width: 100%
+        }
+      }
+  }
+}
+.part5{
+   .document{
+       .imgs{
+        img{
+            width: 100%
+        }
+       }
+   } 
+}
+.part6{
+    .example{
+      .imgs{
+         
+        img{
+            width:100%;
+            
+        }
+      }
+    }
+    
+}
+.part7{
+    background-color: #212121;
+    color:  #f2f2f2;
+    padding: 10px 2rem;
+    .top{
+      border-bottom: 1px solid rgba(253, 245, 244, 0.212);
+      overflow: hidden;
+      .left{
+          width: 80%;
+          float: left;
+          display:flex;
+          justify-content: space-around;
+          ul{
+             li{
+                 line-height: 30px;
+                 font-size: 12px;
+             }
+             li:nth-child(1){
+                 font-size: 14px;
+                 line-height: 40px
+             }
+              
+          }
+      }
+      .right{
+          padding-top: 20px;
+        //   width: 20%;
+          float: right;
+          line-height: 40px;
+      }
+    }
+    .bottom{
+        text-align: center;
+        font-size: 12px;
+        line-height: 30px;
+        height: 120px;
+        a{
+            color: #0EC1C4;
+        }
+    }
+}
+.allpacture{
+    // margin-top: 80px;
+    img{
+        width: 100%;
+        display: block;
+    }
+  }
+.swiper-container1 {
+    .swiper-slide:nth-child(1) {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+     
+        // img{
+        //     width: 100%;
+        //     height: 100%;
+        
+        // }
+    }
+}
+
+.on {
+    /* width: 354px; */
+    background-color: rgba(72, 91, 133, 0.8);
+}
+
+@media (max-width: 700px) {
+    @keyframes myfirst{
+        from {
+            width:0;
+        }
+        to{
+            width: 75px;
+        }
+    }
+    .zhedie{
+        display: block !important;
+        // right:80px !important;
+    }
+    .nav{
+        position:absolute;
+        right: 0;
+        top: 10px;
+        li{
+           line-height: 30px;
+           animation: myfirst 0.5s linear;
+           background-color: #9D0102;
+           text-align: center;
+           a{
+               color:#FFF;
+               font-size: 14px
+
+           }
+        }
+
+    }
+    
+    .parts{
+        background-color: #FFFFFF;
+        height: 100%;
+        padding: 0 10px;
+        overflow: hidden;
+        .boxs{
+            // height: 600px;
+            min-width: 280px;
+            margin-top: 90px;
+            border-top: 1px solid #9D0102;
+            text-align: center;
+            color: #9D0102;
+            .title1{
+                display: block;
+                width: 4.53rem;
+                min-width:200px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #FFFFFF;
+                top: -15px;
+                text-align: center;
+                color: #9D0102;
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+            // .detail{
+            //     height: 100%;
+            //     margin-top: 10px;
+    
+                
+            //  }
+        }
+    }
+    .part3{
+        .case{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+            
+           img{
+             width: 8rem;
+             height: 13.55rem;
+             margin: 0.05rem 0.02rem;
+           }
+        }
+    }
+    .part3-1{
+        .case70{
+            background-color: #9D0102;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+            
+           img{
+             width: 8rem;
+             height: 13rem;
+             margin: 0.05rem 0.02rem;
+           }
+        }
+    }
+    .part4{
+        .advantage{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content:space-evenly;
+          .imgs{
+                width: 8rem !important;
+                height:300px !important;
+                background-color: #9D0102;
+                margin: 0.05rem 0.02rem !important;
+                color: #fff;
+      
+                img{
+                 width: 100%;
+                 height: 100%;
+                 display: block;
+                }
+            }
+            .imgs:nth-child(1){
+                width:16.8rem !important;
+                height: 198px;
+                margin: 0.05rem 0.02rem;
+                img{
+                    width: 100%
+                }
+              }
+           
+        }
+      }
+
+      .part7{
+        padding: 0 !important;
+        .left{
+            width: 70% !important;
+        }
+
+    }
+}
+.show{
+    display: block
+}
+.hidden{
+    display: none;
+}

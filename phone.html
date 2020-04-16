@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<title>头像修改</title>
+<link rel="stylesheet" href="//lib.baomitu.com/amazeui/2.7.2/css/amazeui.min.css">
+<link rel="stylesheet" href="//lib.baomitu.com/cropper/4.0.0-beta/cropper.min.css">
+<style>
+.am-g { margin-top: 5px; }
+#file { display: none; }
+img { max-width: 100%; max-height: 400px; }
+#qrcode { text-align: center; }
+#qrcode .txt { font-size: 1.2rem; }
+.preview { width: 100px; height: 100px; overflow: hidden; margin-top: 28px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+
+<body>
+<!--页头-->
+<header data-am-widget="header" class="am-show-sm-down am-header am-header-default">
+  <div class="am-header-left am-header-nav"><a href="javascript:history.back();"><i class="am-header-icon am-icon-angle-left"></i></a></div>
+  <h1 class="am-header-title am-text-truncate">修改头像</h1>
+</header>
+<div class="am-g">
+  <div class="am-u-sm-12 am-u-md-10">
+    <img id="image" src="/attachments/face/233655.jpg">
+  </div>
+  <div class="am-show-md-up am-u-md-2">
+    <div id="qrcode">
+      <div class="img"></div>
+      <div class="txt">也可手机扫描后操作</div>
+    </div>
+    <hr data-am-widget="divider" class="am-divider am-divider-dotted">
+    <div class="preview am-circle"></div>
+    <div class="preview am-radius"></div>
+  </div>
+</div>
+<div class="am-g am-animation-slide-left">
+  <div class="am-u-sm-12">
+    <button type="button" class="am-btn am-radius am-btn-success am-btn-sm" id="select"><i class="am-icon-cloud-upload"></i> 选择图片</button>
+    <div class="am-btn-group am-btn-group-sm">
+      <button type="button" class="am-btn am-radius am-btn-primary" id="zoom-in"><i class="am-icon-search-plus"></i> 放大</button>
+      <button type="button" class="am-btn am-radius am-btn-primary" id="zoom-out"><i class="am-icon-search-minus"></i> 缩小</button>
+      <button type="button" class="am-btn am-radius am-btn-primary" id="scaleX"><i class="am-icon-arrows-h"></i> 水平翻转</button>
+      <button type="button" class="am-btn am-radius am-btn-primary" id="scaleY"><i class="am-icon-arrows-v"></i> 垂直翻转</button>
+      <button type="button" class="am-btn am-radius am-btn-primary" id="reset"><i class="am-icon-refresh "></i> 还原</button>
+    </div>
+    <button type="button" class="am-btn am-radius am-btn-warning am-btn-sm" id="save"><i class="am-icon-camera"></i> 保存</button>
+  </div>
+</div>
+<input type="file" id="file" name="upload" accept="image/*">
+<input type="hidden" id="key" value="676651647500817859">
+<input type="hidden" id="redirect" value="">
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+  <div class="am-modal-dialog">
+    <div class="am-modal-bd"></div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+    </div>
+  </div>
+</div>
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">正在保存...</div>
+    <div class="am-modal-bd"><span class="am-icon-spinner am-icon-spin"></span></div>
+  </div>
+</div>
+<script src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="//lib.baomitu.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="//lib.baomitu.com/cropper/4.0.0-beta/cropper.min.js"></script>
+<script src="//lib.baomitu.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script>
+$(function(){
+  'use strict'
+
+  if($(window).width()<=640){$('div.am-btn-group').remove()}
+
+  var URL = window.URL || window.webkitURL
+  var $image = $('#image')
+  var $file=$('#file')
+  var scaleX=-1
+  var scaleY=-1
+
+  // 网址二维码
+  $('#qrcode').children('div.img').qrcode({
+    text:'https://www.psy.com.cn/member/face.asp?key='+$('#key').val(),
+    width:100,
+    height:100
+  })
+
+  // 选择图片
+  $('#select').on('click',function(){$file.trigger('click')})
+
+  // 截取图片
+  $image.cropper({
+    aspectRatio: 1,
+    preview:'.preview'
+  })
+
+  // 放大
+  $('#zoom-in').on('click',function(){$image.cropper('zoom',0.1)})
+
+  // 缩小
+  $('#zoom-out').on('click',function(){$image.cropper('zoom',-0.1)})
+
+  // 水平翻转
+  $('#scaleX').on('click',function(){$image.cropper('scaleX',scaleX);scaleX=scaleX*-1})
+
+  // 垂直翻转
+  $('#scaleY').on('click',function(){$image.cropper('scaleY',scaleY);scaleY=scaleY*-1})
+
+  // 还原
+  $('#reset').on('click',function(){$image.cropper('reset')})
+
+  // 保存
+  $('#save').on('click',function(){
+    $('#my-modal-loading').modal()
+    var img=$image.cropper('getCroppedCanvas',{width:100,height:100}).toDataURL('image/jpeg')
+    $.ajax({
+      method:'POST',
+      data:{face:img},
+      success:function(){
+        var redirect=$('#redirect').val()
+        $('#my-modal-loading').modal('close')
+        $('#my-alert').find('.am-modal-bd').text('保存成功').end().modal({
+          onConfirm:function(){
+            if(redirect){window.location=redirect}
+          }
+        })
+      },
+      error:function(jqXHR,textStatus,errorThrown){
+        $('#my-modal-loading').modal('close')
+        $('#my-alert').find('.am-modal-bd').text('保存出错：<br>'+textStatus+'<br>'+errorThrown).end().modal()
+      }
+    })
+  })
+
+  // 浏览文件
+  $file.on('change',function () {
+    var files = this.files
+    if (files && files.length) {
+      var file = files[0]
+      if (/^image\/\w+$/.test(file.type)) {
+        var blobURL = URL.createObjectURL(file)
+        $image.one('built', function () {URL.revokeObjectURL(blobURL)}).cropper('reset').cropper('replace', blobURL)
+      }
+      else { $('#my-alert').find('.am-modal-bd').text('请选择图片文件').end().modal()}
+    }
+  })
+})
+</script>
+</body>
+</html>
